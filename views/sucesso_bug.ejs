@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+  <h1>✅ <%= title %></h1>
+  <p>Recebemos seu relatório. Obrigado por ajudar!</p>
+
+  <h2>Resumo do Relatório</h2>
+  <ul>
+    <li><strong>Resumo:</strong> <%= data.titulo %></li>
+    <li><strong>Módulo:</strong> <%= data.modulo %></li>
+    <li><strong>Data:</strong> <%= data.dataEncontrada %></li>
+    <li><strong>Prioridade:</strong> <%= data.prioridade %></li>
+  </ul>
+
+  <p><a href="/bug_report">Reportar outro bug</a> | <a href="/">Voltar à Home</a></p>
+</body>
+</html>

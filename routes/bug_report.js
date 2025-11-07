@@ -16,19 +16,15 @@ router.post('/', function(req, res, next) {
     if (!data.titulo || data.titulo.trim() === '') {
         errors.titulo = { msg: 'O resumo do bug é obrigatório.' };
     }
-
     if (!data.modulo || data.modulo.trim() === '') {
         errors.modulo = { msg: 'O módulo é obrigatório.' };
     }
-
     if (!data.prioridade || data.prioridade === '') {
         errors.prioridade = { msg: 'Selecione uma prioridade.' };
     }
-
     if (!data.descricao || data.descricao.trim().length < 10) {
         errors.descricao = { msg: 'Descreva os passos (mínimo 10 caracteres).' };
     }
-
     if (!data.dataEncontrada) {
         errors.dataEncontrada = { msg: 'A data é obrigatória.' };
     } else {
@@ -45,13 +41,9 @@ router.post('/', function(req, res, next) {
             data: data
         });
     } else {
-        res.render('sucesso', {
+        res.render('sucesso_bug', {
             title: 'Bug Reportado com Sucesso',
-            data: data,
-            backLink: { 
-                url: '/bug_report', 
-                text: 'Reportar outro bug' 
-            }
+            data: data
         });
     }
 });

@@ -16,15 +16,12 @@ router.post('/', function(req, res, next) {
     if (!data.nome || data.nome.trim() === '') {
         errors.nome = { msg: 'O campo Nome é obrigatório.' };
     }
-
     if (!data.email || !data.email.includes('@')) {
         errors.email = { msg: 'Por favor, insira um email válido.' };
     }
-
     if (!data.tipoIngresso || data.tipoIngresso === '') {
         errors.tipoIngresso = { msg: 'Você deve selecionar um tipo de ingresso.' };
     }
-
     if (!data.termos) {
         errors.termos = { msg: 'Você deve aceitar os termos de uso.' };
     }
@@ -36,13 +33,9 @@ router.post('/', function(req, res, next) {
             data: data 
         });
     } else {
-        res.render('sucesso', { 
+        res.render('sucesso_inscricao', { 
             title: 'Inscrição Confirmada', 
-            data: data,
-            backLink: { 
-                url: '/inscricao', 
-                text: 'Fazer outra inscrição' 
-            }
+            data: data
         });
     }
 });

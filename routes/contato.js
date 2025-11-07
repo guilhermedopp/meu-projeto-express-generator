@@ -16,15 +16,12 @@ router.post('/', function(req, res, next) {
     if (!data.nome || data.nome.trim() === '') {
         errors.nome = { msg: 'O campo Nome é obrigatório.' };
     }
-
     if (!data.email || !data.email.includes('@')) {
         errors.email = { msg: 'Por favor, insira um email válido.' };
     }
-
     if (!data.mensagem || data.mensagem.trim().length < 10) {
         errors.mensagem = { msg: 'A mensagem é obrigatória (mín. 10 caracteres).' };
     }
-
     if (!data.aceite) {
         errors.aceite = { msg: 'Você deve aceitar os termos de uso.' };
     }
@@ -36,13 +33,9 @@ router.post('/', function(req, res, next) {
             data: data 
         });
     } else {
-        res.render('sucesso', { 
+        res.render('sucesso_contato', { 
             title: 'Contato Recebido', 
-            data: data,
-            backLink: { 
-                url: '/contato', 
-                text: 'Enviar outro contato' 
-            }
+            data: data
         });
     }
 });
