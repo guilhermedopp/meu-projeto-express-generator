@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <style>
+      .error { color: #b00020; font-size: 0.95em; margin-top: 4px; }
+      .field { margin-bottom: 1rem; }
+      .field input[type="text"],
+      .field input[type="email"],
+      .field input[type="date"],
+      .field select,
+      .field textarea { width: 100%; max-width: 520px; padding: 8px; }
+    </style>
+</head>
+<body>
+    <h1><%= title %></h1>
+
+    <form method="post" action="/bug_report" novalidate>
+        
+        <fieldset class="field">
+            <legend>Detalhes do Bug</legend>
+
+            <div class="field">
+                <label for="titulo">Resumo do Bug*</label><br/>
+                <input type="text" id="titulo" name="titulo" 
+                       value="<%= data.titulo || '' %>">
+                <% if (errors.titulo) { %>
+                    <div class="error"><%= errors.titulo.msg %></div>
+                <% } %>
+            </div>
+
+            <div class="field">
+                <label for="modulo">Módulo Afetado*</label><br/>
+                <input type="text" id="modulo" name="modulo" list="modulos-sugeridos"
+                       value="<%= data.modulo || '' %>">
+                
+                <datalist id="modulos-sugeridos">
+                    <option value="Login"></option>
+                    <option value="Pagamentos"></option>
+                    <option value="Perfil de Usuário"></option>
+                    <option value="Busca"></option>
+                </datalist>
+
+                <% if (errors.modulo) { %>
+                    <div class="error"><%= errors.modulo.msg %></div>
+                <% } %>
+            </div>
+
+            <div class="field">
+                <label for="dataEncontrada">Data Encontrada*</label><br/>
+                <input type="date" id="dataEncontrada" name="dataEncontrada"
+                       value="<%= data.dataEncontrada || '' %>">
+                <% if (errors.dataEncontrada) { %>
+                    <div class="error"><%= errors.dataEncontrada.msg %></div>
+                <% } %>
+            </div>
+
+            <div class="field">
+                <label for="prioridade">Prioridade*</label><br/>
+                <select id="prioridade" name="prioridade">
+                    <option value="" <%= (data.prioridade === '') ? 'selected' : '' %>>-- Selecione --</option>
+                    <option value="baixa" <%= (data.prioridade === 'baixa') ? 'selected' : '' %>>
+                        Baixa
+                    </option>
+                    <option value="media" <%= (data.prioridade === 'media') ? 'selected' : '' %>>
+                        Média
+                    </option>
+                    <option value="alta" <%= (data.prioridade === 'alta') ? 'selected' : '' %>>
+                        Alta
+                    </option>
+                </select>
+                <% if (errors.prioridade) { %>
+                    <div class="error"><%= errors.prioridade.msg %></div>
+                <% } %>
+            </div>
+
+            <div class="field">
+                <label for="descricao">Passos para Reproduzir*</label><br/>
+                <textarea id="descricao" name="descricao" rows="5"><%= data.descricao || '' %></textarea>
+                <% if (errors.descricao) { %>
+                    <div class="error"><%= errors.descricao.msg %></div>
+                <% } %>
+            </div>
+
+        </fieldset>
+        
+        <button type="submit">Enviar Relatório</button>
+    </form>
+    <a href="/">Voltar para a página inicial</a>
+</body>
+</html>

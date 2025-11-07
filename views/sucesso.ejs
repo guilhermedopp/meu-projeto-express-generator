@@ -1,27 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title><%= title %></title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-  <h1>✅ <%= title %></h1>
-  <p>Recebemos seus dados. Obrigado pelo contato!</p>
+  <h1>✅ <%= title %></h1>
+  <p>Recebemos seus dados. Obrigado!</p>
 
-  <h2>Resumo</h2>
-  <ul>
-    <li><strong>Nome:</strong> <%= data.nome %></li>
-    <li><strong>E-mail:</strong> <%= data.email %></li>
-    <% if (data.idade) { %><li><strong>Idade:</strong> <%= data.idade %></li><% } %>
-    <% if (data.genero) { %><li><strong>Gênero:</strong> <%= data.genero %></li><% } %>
-    <% if (Array.isArray(data.interesses) && data.interesses.length) { %>
-      <li><strong>Interesses:</strong> <%= data.interesses.join(', ') %></li>
+  <h2>Resumo</h2>
+  <ul>
+        <% if (data.nome) { %>
+      <li><strong>Nome:</strong> <%= data.nome %></li>
     <% } %>
-    <li><strong>Mensagem:</strong> <%= data.mensagem %></li>
-  </ul>
+    <% if (data.email) { %>
+      <li><strong>E-mail:</strong> <%= data.email %></li>
+    <% } %>
 
-  <p><a href="/contato">Enviar outro</a> | <a href="/">Voltar à Home</a></p>
+        <% if (data.titulo) { %>
+      <li><strong>Resumo:</strong> <%= data.titulo %></li>
+    <% } %>
+    <% if (data.modulo) { %>
+      <li><strong>Módulo:</strong> <%= data.modulo %></li>
+    <% } %>
+    <% if (data.dataEncontrada) { %>
+      <li><strong>Data:</strong> <%= data.dataEncontrada %></li>
+    <% } %>
+    <% if (data.prioridade) { %>
+      <li><strong>Prioridade:</strong> <%= data.prioridade %></li>
+    <% } %>
+    <% if (data.descricao) { %>
+      <li><strong>Descrição:</strong> <%= data.descricao %></li>
+    <% } %>
+
+        <% if (data.tipoIngresso) { %>
+      <li><strong>Tipo de Ingresso:</strong> <%= data.tipoIngresso %></li>
+    <% } %>
+    <% if (data.comentarios && data.comentarios.trim() !== '') { %>
+      <li><strong>Comentários:</strong> <%= data.comentarios %></li>
+    <% } %>
+
+        <% if (data.idade) { %>
+      <li><strong>Idade:</strong> <%= data.idade %></li>
+    <% } %>
+    <% if (data.genero) { %>
+      <li><strong>Gênero:</strong> <%= data.genero %></li>
+    <% } %>
+    <% if (Array.isArray(data.interesses) && data.interesses.length) { %>
+      <li><strong>Interesses:</strong> <%= data.interesses.join(', ') %></li>
+    <% } %>
+    <% if (data.mensagem) { %>
+      <li><strong>Mensagem:</strong> <%= data.mensagem %></li>
+    <% } %>
+  </ul>
+
+    <p>
+    <a href="<%= backLink.url %>"><%= backLink.text %></a> | 
+    <a href="/">Voltar à Home</a>
+  </p>
 </body>
 </html>

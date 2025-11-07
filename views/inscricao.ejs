@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <style>
+      .error { color: #b00020; font-size: 0.95em; margin-top: 4px; }
+      .field { margin-bottom: 1rem; }
+      .field input[type="text"],
+      .field input[type="email"],
+      .field select,
+      .field textarea { width: 100%; max-width: 520px; padding: 8px; }
+    </style>
+</head>
+<body>
+    <h1><%= title %></h1>
+
+    <form method="post" action="/inscricao" novalidate>
+        
+        <fieldset class="field">
+            <legend>Informações Pessoais</legend>
+
+            <div class="field">
+                <label for="nome">Nome Completo*</label><br/>
+                <input type="text" id="nome" name="nome" 
+                       value="<%= data.nome || '' %>">
+                <% if (errors.nome) { %>
+                    <div class="error"><%= errors.nome.msg %></div>
+                <% } %>
+            </div>
+
+            <div class="field">
+                <label for="email">Email*</label><br/>
+                <input type="email" id="email" name="email" 
+                       value="<%= data.email || '' %>">
+                <% if (errors.email) { %>
+                    <div class="error"><%= errors.email.msg %></div>
+                <% } %>
+            </div>
+        </fieldset>
+
+        <fieldset class="field">
+            <legend>Detalhes da Inscrição</legend>
+
+            <div class="field">
+                <label for="tipoIngresso">Tipo de Ingresso*</label><br/>
+                <select id="tipoIngresso" name="tipoIngresso">
+                    <option value="" <%= (data.tipoIngresso === '') ? 'selected' : '' %>>-- Selecione --</option>
+                    
+                    <optgroup label="Ingressos Padrão">
+                        <option value="basico" <%= (data.tipoIngresso === 'basico') ? 'selected' : '' %>>
+                            Básico
+                        </option>
+                        <option value="premium" <%= (data.tipoIngresso === 'premium') ? 'selected' : '' %>>
+                            Premium
+                        </option>
+                    </optgroup>
+                    
+                    <optgroup label="Pacotes VIP">
+                        <option value="vip" <%= (data.tipoIngresso === 'vip') ? 'selected' : '' %>>
+                            VIP
+                        </option>
+                    </optgroup>
+                </select>
+                <% if (errors.tipoIngresso) { %>
+                    <div class="error"><%= errors.tipoIngresso.msg %></div>
+                <% } %>
+            </div>
+            <div class="field">
+                <label for="comentarios">Comentários (Opcional)</label><br/>
+                <textarea id="comentarios" name="comentarios" rows="4"><%= data.comentarios || '' %></textarea>
+            </div>
+
+            <div class="field">
+                <label>
+                    <input type="checkbox" name="termos" value="aceito"
+                           <%= data.termos ? 'checked' : '' %>>
+                    Eu li e aceito os termos de uso*
+                </label>
+                <% if (errors.termos) { %>
+                    <div class="error"><%= errors.termos.msg %></div>
+                <% } %>
+            </div>
+        </fieldset>
+
+        <button type="submit">Enviar Inscrição</button>
+    </form>
+    <a href="/">Voltar para a página inicial</a>
+</body>
+</html>
