@@ -3,9 +3,6 @@ var router = express.Router();
 const { body, validationResult } = require('express-validator');
 const db = require('../db');
 
-let contatosDb = [];
-let proximoId = 1;
-
 /**
  * GET /contato – exibe o formulário.
  * Enviamos 'data' vazio e 'errors' vazio para facilitar o template.
