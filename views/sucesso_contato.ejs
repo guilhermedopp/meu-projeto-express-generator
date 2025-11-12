@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title><%= title %></title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-  <h1>✅ <%= title %></h1>
-  <p>Recebemos seus dados. Obrigado pelo contato!</p>
+  <h1>✅ <%= title %></h1>
+  <p>Recebemos seus dados. Obrigado pelo contato!</p>
 
-  <h2>Resumo</h2>
-  <ul>
-    <li><strong>Nome:</strong> <%= data.nome %></li>
-    <li><strong>E-mail:</strong> <%= data.email %></li>
-    <% if (data.mensagem) { %>
+  <h2>Resumo</h2>
+  <ul>
+    <li><strong>Nome:</strong> <%= data.nome %></li>
+    <li><strong>E-mail:</strong> <%= data.email %></li>
+    <% if (data.mensagem) { %>
       <li><strong>Mensagem:</strong> <%= data.mensagem %></li>
     <% } %>
-  </ul>
+  </ul>
 
-  <p><a href="/contato/lista">Ver contatos cadastrados</a> | <a href="/contato">Enviar outro</a> | <a href="/">Voltar à Home</a></p>
+  <p><a href="/contato">Enviar outro</a> | <a href="/contato/lista">Ver lista</a> | <a href="/">Home</a></p>
 </body>
 </html>

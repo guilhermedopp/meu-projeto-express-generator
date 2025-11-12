@@ -1,21 +1,19 @@
-/* --- RESET GLOBAL E BODY --- */
 * {
-  box-sizing: border-box; /* Gerenciamento de layout mais fácil */
+  box-sizing: border-box;
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  background-color: #f4f7f6; /* Um cinza bem claro para o fundo da página */
+  background-color: #f4f7f6;
   color: #333;
   margin: 0;
-  padding: 2rem; /* Um padding responsivo */
+  padding: 2rem;
 }
 
-/* --- TIPOGRAFIA E LINKS --- */
 h1 {
-  font-size: 2.25rem; /* 36px */
+  font-size: 2.25rem;
   color: #111;
   margin-top: 0;
   margin-bottom: 1.5rem;
@@ -24,7 +22,7 @@ h1 {
 }
 
 a {
-  color: #007bff; /* Um azul mais moderno */
+  color: #007bff;
   text-decoration: none;
 }
 
@@ -32,39 +30,31 @@ a:hover {
   text-decoration: underline;
 }
 
-/* --- LAYOUT PRINCIPAL DO FORMULÁRIO --- */
-/* Estiliza o <form> como um "cartão" branco 
-  para se destacar do fundo cinza da página.
-*/
 form {
-  max-width: 700px; /* Limita a largura do formulário */
-  margin: 0 auto;   /* Centraliza o formulário na página (se for mais larga) */
+  max-width: 700px;
+  margin: 0 auto; 
   background-color: #ffffff;
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-/* --- GRUPO DE CAMPO (sua classe .field) --- */
 .field {
-  margin-bottom: 1.5rem; /* Espaçamento entre os campos */
+  margin-bottom: 1.5rem;
 }
 
-/* --- RÓTULOS (LABEL) --- */
 label {
-  display: block; /* Faz o rótulo ocupar a própria linha */
-  margin-bottom: 0.5rem; /* Espaço entre o rótulo e o campo */
-  font-weight: 600; /* Deixa o rótulo em negrito */
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
-/* --- CAMPOS DE ENTRADA (INPUT, SELECT, TEXTAREA) --- */
-/* Estilização unificada para todos os campos de formulário */
 input[type="text"],
 input[type="email"],
 input[type="number"],
 select,
 textarea {
-  width: 100%; /* Ocupa 100% da largura do contêiner */
+  width: 100%;
   padding: 10px;
   font-size: 1rem;
   border: 1px solid #ccc;
@@ -72,7 +62,6 @@ textarea {
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* Efeito de foco sutil */
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="number"]:focus,
@@ -80,13 +69,9 @@ select:focus,
 textarea:focus {
   border-color: #007bff;
   box-shadow: 0 0 0 3px rgba(0,123,255,0.2);
-  outline: none; /* Remove a borda padrão do navegador */
+  outline: none;
 }
 
-/* --- CHECKBOXES E FIELDSET --- */
-/* Seu .field que também é <fieldset> (para os Interesses) 
-  e o <fieldset> que adicionamos (para os componentes demo) 
-*/
 fieldset {
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -95,10 +80,9 @@ fieldset {
 
 legend {
   font-weight: 600;
-  padding: 0 0.5em; /* Abre um espaço na borda */
+  padding: 0 0.5em;
 }
 
-/* Garante que os checkboxes e seus rótulos fiquem alinhados */
 fieldset label {
   display: flex;
   align-items: center;
@@ -107,14 +91,13 @@ fieldset label {
 }
 
 fieldset input[type="checkbox"] {
-  width: auto; /* Checkboxes não devem ter 100% de largura */
+  width: auto;
   margin-right: 0.75rem;
-  transform: scale(1.1); /* Deixa o checkbox um pouco maior */
+  transform: scale(1.1);
 }
 
-/* --- BOTÃO DE ENVIO --- */
-button[type="submit"] {
-  background-color: #28a745; /* Verde (sucesso/enviar) */
+.btn-submit-verde {
+  background-color: #28a745;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -125,30 +108,24 @@ button[type="submit"] {
   transition: background-color 0.2s;
 }
 
-button[type="submit"]:hover {
-  background-color: #218838; /* Verde mais escuro */
+.btn-submit-verde:hover {
+  background-color: #218838;
 }
 
-/* --- CLASSES DE VALIDAÇÃO (do seu EJS) --- */
-
-/* A mensagem de erro (Ex: "Nome é obrigatório") */
 .error {
-  color: #d93025; /* Vermelho forte */
+  color: #d93025;
   font-size: 0.9em;
   font-weight: bold;
   margin-top: 5px;
 }
 
-/* A dica (Ex: "Se informado, deve...") */
 .hint {
   color: #555;
   font-size: 0.9em;
   margin-top: 4px;
 }
 
-/* Classe bônus para destacar o *campo* com erro */
-/* (Você pode adicionar isso no seu EJS: class="<%= errors.nome ? 'input-error' : '' %>") */
 .input-error {
   border-color: #d93025;
-  background-color: #fff8f8; /* Fundo rosa bem claro */
+  background-color: #fff8f8;
 }
