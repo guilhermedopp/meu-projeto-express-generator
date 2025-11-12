@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title><%= title %></title>
   <link rel="stylesheet" href="/stylesheets/style.css">
+  
   <style>
     table {
       border-collapse: collapse;
@@ -24,11 +25,55 @@
     tbody tr:nth-child(even) {
       background: #fafafa;
     }
-    .actions a {
-      margin-right: 8px;
+    .actions-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* NOVO BLOCO DE CSS:
+      Isso remove o "bloco branco" (o fundo e borda do formulário)
+      e garante que ele não ocupe espaço extra.
+    */
+    .actions-container form {
+      margin: 0;
+      padding: 0;
+      border: none;
+      background: none;
+      box-shadow: none; /* Garante a remoção de qualquer sombra */
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 0.9em;
+      font-weight: bold;
+      color: white;
+      
+      /* Padroniza o tamanho */
+      min-width: 75px;   
+      text-align: center;
+      box-sizing: border-box; /* Garante que o padding não afete a largura */
+    }
+    
+    .btn-edit {
+      background-color: #007bff;
+    }
+    .btn-edit:hover {
+      background-color: #0056b3;
+    }
+    .btn-delete {
+      background-color: #28a745;
+    }
+    .btn-delete:hover {
+      background-color: #218838;
     }
   </style>
-</head>
+  </head>
 <body>
   <h1><%= title %></h1>
   <p><a href="/contato">Novo contato</a> | <a href="/">Home</a></p>
@@ -68,10 +113,13 @@
             <td><%= c.mensagem %></td>
             <td><%= c.criado_em %></td>
             <td class="actions">
-             <form action="/contato/<%= c.id %>/delete" method="post"
-                   onsubmit="return confirm('Tem certeza que deseja excluir o contato <%= c.nome %>?');">
-                <button type="submit">Excluir</button>
-             </form>
+              <div class="actions-container">
+                <a href="/contato/<%= c.id %>/edit" class="btn btn-edit">Editar</a>
+                <form action="/contato/<%= c.id %>/delete" method="post"
+                      onsubmit="return confirm('Tem certeza que deseja excluir o contato <%= c.nome %>?');">
+                  <button type="submit" class="btn btn-delete">Excluir</button>
+                </form>
+              </div>
             </td>
           </tr>
         <% }) %>
