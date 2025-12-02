@@ -99,14 +99,14 @@
             <td><%= c.idade || '-' %></td>
             <td><%= c.genero || '-' %></td>
             <td>
-              <% if (c.interesses) { %>
-                <%= c.interesses.split(',').join(', ') %>
+              <% if (c.interesses && c.interesses.length > 0) { %>
+                <%= c.interesses.join(', ') %>
               <% } else { %>
                 -
               <% } %>
             </td>
             <td><%= c.mensagem %></td>
-            <td><%= c.criado_em %></td>
+            <td><%= c.criadoEm %></td>
             <td class="actions">
               <div class="actions-container">
                 <a href="/contato/<%= c.id %>/edit" class="btn btn-edit">Editar</a>

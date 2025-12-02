@@ -13,8 +13,6 @@ var inscricaoRouter = require('./routes/inscricao');
 var bugReportRouter = require('./routes/bug_report');
 
 
-
-
 var app = express();
 
 // view engine setup
